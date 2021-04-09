@@ -1,7 +1,8 @@
-let flash_restant = 0
 input.onButtonPressed(Button.A, function () {
     basic.showNumber(input.lightLevel())
 })
+let flash_restant = 0
+music.setBuiltInSpeakerEnabled(true)
 basic.forever(function () {
     if (input.lightLevel() < 140) {
         led.plot(0, 0)
@@ -11,7 +12,8 @@ basic.forever(function () {
 })
 basic.forever(function () {
     while (input.lightLevel() < 140) {
-        pins.servoWritePin(AnalogPin.P0, 68)
+        music.playTone(262, music.beat(BeatFraction.Quarter))
+        pins.servoWritePin(AnalogPin.P0, 65)
         pins.digitalWritePin(DigitalPin.P1, 0)
         pins.digitalWritePin(DigitalPin.P2, 1)
         basic.pause(300)
